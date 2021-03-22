@@ -1,10 +1,8 @@
 package sdp.edums.app.controller;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import sdp.edums.app.model.Course;
 import sdp.edums.app.service.CourseService;
 
@@ -26,15 +24,12 @@ public class CourseController {
         log.info("getMapping -> /findAllCourses");
         return courseService.fetchAllCourses();
     }
-    @PostMapping("createCourse")
-    public int createCourse(Course course){
-        log.info("postMapping -> /createCourse");
-        try {
-            courseService.createCourse(course);
-        }catch (Exception ex){
-            log.error("Error occurred in createCourse with message:"+ ex);
-        }
-        return 1;
+
+    @PostMapping(value = "createCourse", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public int createCourse(@RequestBody Course course) {
+        log.info("postMapping -> /createCourse " + course);
+
+        return courseService.createCourse(course);
 
     }
 

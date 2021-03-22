@@ -17,9 +17,20 @@ public class MailStatusService {
         this.mailStatusRepository = mailStatusRepository;
     }
 
-    public void createMailStatus(MailStatus mailStatus){
-        mailStatus.setId(UUID.randomUUID().toString());
-        mailStatusRepository.save(mailStatus);
+    public int createMailStatus(MailStatus mailStatus){
+        if (mailStatus.getMail() == null || mailStatus.getStatusId()==null){
+            return 0;
+        }else {
+            try {
+                mailStatus.setId(UUID.randomUUID().toString());
+                mailStatusRepository.save(mailStatus);
+                return 1;
+            }catch (Exception ex){
+                return 0;
+            }
+
+        }
+
     }
 
     public List<MailStatus> fetchAllMailStatuses(){
