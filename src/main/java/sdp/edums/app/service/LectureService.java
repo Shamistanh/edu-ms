@@ -2,32 +2,34 @@ package sdp.edums.app.service;
 
 import org.springframework.stereotype.Service;
 import sdp.edums.app.model.Assignment;
+import sdp.edums.app.model.Lecture;
 import sdp.edums.app.repository.AssignmentRepository;
+import sdp.edums.app.repository.LectureRepository;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
-public class AssignmentService {
+public class LectureService {
 
-    private final AssignmentRepository assignmentRepository;
+    private final LectureRepository lectureRepository;
 
-    public AssignmentService(AssignmentRepository assignmentRepository) {
-        this.assignmentRepository = assignmentRepository;
+    public LectureService(LectureRepository lectureRepository) {
+        this.lectureRepository = lectureRepository;
     }
 
 
-    public List<Assignment> fetchAllAssignments(String courseId){
-        return assignmentRepository.findAllByCourseId(courseId);
+    public List<Lecture> fetchAllLectures(String courseId){
+        return lectureRepository.findAllByCourseId(courseId);
     }
 
-    public int createAssignment(Assignment assignment) {
-        if (assignment.getCourseId() == null){
+    public int createLecture(Lecture lecture) {
+        if (lecture.getCourseId() == null){
             return 0;
         }else {
             try {
-                assignment.setId(UUID.randomUUID().toString());
-                assignmentRepository.save(assignment);
+                lecture.setId(UUID.randomUUID().toString());
+                lectureRepository.save(lecture);
                 return 1;
             }catch (Exception ex){
                 return 0;
