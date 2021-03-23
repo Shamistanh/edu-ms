@@ -17,15 +17,15 @@ public class Assignment {
 
     @NotNull
     @Column(name = "course_id")
-    String courseId;
+    private String courseId;
 
     @NotNull
     @Column(name = "deadline")
-    String deadline;
+    private String deadline;
 
     @Column(name = "point")
-    String point;
+    private String point;
 
     @Column(name = "file_name")
-    String fileName;
+    private String fileName;
 }
