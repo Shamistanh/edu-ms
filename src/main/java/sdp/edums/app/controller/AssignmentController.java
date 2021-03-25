@@ -20,9 +20,11 @@ public class AssignmentController {
     }
 
     @GetMapping("fetchAllAssignments")
-    public List<Assignment> findAllAssignments(@RequestParam("courseId")String courseId) {
-        log.info("getMapping -> /fetchAllAssignments from course with id "+courseId);
-        return assignmentService.fetchAllAssignments(courseId);
+    public List<Assignment> findAllAssignments() {
+        //log.info("getMapping -> /fetchAllAssignments from course with id "+courseId);
+        //return assignmentService.fetchAllAssignments(courseId);
+        log.info("getMapping -> /fetchAllAssignments ");
+        return assignmentService.fetchAllAssignments();
     }
 
     @PostMapping(value = "createAssignment", consumes = MediaType.APPLICATION_JSON_VALUE)

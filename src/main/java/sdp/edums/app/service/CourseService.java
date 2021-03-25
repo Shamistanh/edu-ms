@@ -25,7 +25,7 @@ public class CourseService {
             return 0;
         }else {
             try {
-                course.setId(UUID.randomUUID().toString());
+                //course.setId(UUID.randomUUID().toString());
                 log.info("Create Course "+course);
                 courseRepository.save(course);
                 return 1;

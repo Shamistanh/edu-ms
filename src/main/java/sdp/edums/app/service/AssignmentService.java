@@ -21,6 +21,10 @@ public class AssignmentService {
         return assignmentRepository.findAllByCourseId(courseId);
     }
 
+    public List<Assignment> fetchAllAssignments(){
+        return assignmentRepository.findAll();
+    }
+
     public int createAssignment(Assignment assignment) {
         if (assignment.getCourseId() == null){
             return 0;

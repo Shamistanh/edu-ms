@@ -26,6 +26,10 @@ public class Assignment {
     @Column(name = "point")
     private String point;
 
+    @NotNull
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "file_name")
     private String fileName;
 }
