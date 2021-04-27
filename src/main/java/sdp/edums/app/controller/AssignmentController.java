@@ -27,10 +27,9 @@ public class AssignmentController {
         return assignmentService.fetchAllAssignments();
     }
 
-    @PostMapping(value = "createAssignment", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "c", consumes = MediaType.APPLICATION_JSON_VALUE)
     public int createCourse(@RequestBody Assignment assignment) {
         log.info("postMapping -> /createAssignment " + assignment);
-
         return assignmentService.createAssignment(assignment);
 
     }

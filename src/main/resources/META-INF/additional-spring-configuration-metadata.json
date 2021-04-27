@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "python.import.site",
+      "type": "java.lang.String",
+      "description": "Description for python.import.site."
+  }
+] }

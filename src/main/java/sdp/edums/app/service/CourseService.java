@@ -1,11 +1,13 @@
 package sdp.edums.app.service;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sdp.edums.app.mail.JavaMailSender;
+import sdp.edums.app.mail.MailDetails;
 import sdp.edums.app.model.Course;
 import sdp.edums.app.repository.CourseRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,8 +21,12 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
+    @Autowired
+    JavaMailSender javaMailSender;
 
     public int createCourse(Course course){
+
+        MailDetails mailDetails = new MailDetails(course.getCourseName());
         if (course.getCourseName() == null || course.getMail()==null){
             return 0;
         }else {
@@ -28,6 +34,8 @@ public class CourseService {
                 //course.setId(UUID.randomUUID().toString());
                 log.info("Create Course "+course);
                 courseRepository.save(course);
+                javaMailSender.sendmail(course.getMail(), mailDetails.getMailSubject(), "Sizin "+course.getCourseName()+" "+mailDetails.getMailContent());
+
                 return 1;
             }catch (Exception ex){
                 log.error("Error occurred in createCourse with message:"+ ex);

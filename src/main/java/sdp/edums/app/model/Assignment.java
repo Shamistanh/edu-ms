@@ -1,5 +1,6 @@
 package sdp.edums.app.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
+@Builder
 public class Assignment {
 
     @Id

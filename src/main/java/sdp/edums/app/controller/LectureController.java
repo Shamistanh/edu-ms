@@ -3,7 +3,6 @@ package sdp.edums.app.controller;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import sdp.edums.app.model.Assignment;
 import sdp.edums.app.model.Lecture;
 import sdp.edums.app.service.LectureService;
 

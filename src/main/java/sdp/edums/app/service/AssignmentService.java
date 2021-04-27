@@ -26,6 +26,7 @@ public class AssignmentService {
     }
 
     public int createAssignment(Assignment assignment) {
+
         if (assignment.getCourseId() == null){
             return 0;
         }else {

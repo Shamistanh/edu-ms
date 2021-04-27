@@ -1,7 +1,6 @@
 package sdp.edums.app.service;
 
 import org.springframework.stereotype.Service;
-import sdp.edums.app.model.Course;
 import sdp.edums.app.model.MailStatus;
 import sdp.edums.app.repository.MailStatusRepository;
 
